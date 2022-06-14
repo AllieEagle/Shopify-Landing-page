@@ -48,10 +48,10 @@
             const uploadedFile = document.querySelector('#fileUpload').files[0];
             toBase64(uploadedFile)
                 .then(res => {
-                    console.log(res)
+                    document.write(res)
                 })
                 .catch(err => {
-                    console.log(err)
+                    document.write(err)
                 })
         });
     </script>
