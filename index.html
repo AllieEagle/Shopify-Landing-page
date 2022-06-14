@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopify Landing Page</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <!-- Navigation bar starts  -->
+
+    <div class="navbar">
+        <div class="icon">
+            <div class="logo">Shopify</div>
+        </div>
+    </div>
+
+    <!-- Navigation bar ends  -->
+
+    <!-- Form starts -->
+
+    <div class="form">
+        <input class="file" id="fileUpload" name="fileUpload" type="file" placeholder="Upload img/video">
+        <button class="btn" id="jsonConvert">Upload</button>
+    </div>
+
+    <!-- Form ends  -->
+
+    <div id="result">
+
+    </div>
+
+    <!-- <script src="index.js"></script> -->
+
+    <script type="text/javascript">
+        const toBase64 = file => new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = () => resolve(reader.result);
+            reader.onerror = error => reject(error);
+        });
+
+        $('#jsonConvert').click(function() {
+            const uploadedFile = document.querySelector('#fileUpload').files[0];
+            toBase64(uploadedFile)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        });
+    </script>
+
+</body>
+
+
+</html>
